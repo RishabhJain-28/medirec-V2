@@ -238,8 +238,7 @@
                 console.log("1");
                 $.get("http://localhost:8080/ipfs/" + result, function (data) {
                   patientRecord = data;
-                  console.log("2");
-
+                  console.log({ data });
                   content =
                     `<div class="tab-content">
                         <div id="view${patientAddress}">
@@ -285,6 +284,9 @@
                                                 <button class="btn btn-primary" onclick = "submitDiagnosis(this,` +
                     index +
                     `)">Submit</button>
+                    <button class="btn btn-primary" onclick = "submitDiagnosis(this,` +
+                    index +
+                    `)">Upload Doc</button>
                                             </div>
                                         </div>
                                     </div>

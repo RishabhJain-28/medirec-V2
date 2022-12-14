@@ -224,9 +224,16 @@
 
             if (designation == "0") {
               var reportTitle = `Name: ${name}
-Public Key: ${publicKey}
-                            
-`;
+              Public Key: ${publicKey}
+
+              `;
+
+              const data = {
+                name,
+                publicKey,
+              };
+
+              // var buffer = Buffer(JSON.stringify(data));
               var buffer = Buffer(reportTitle);
 
               ipfs.files.add(buffer, (error, result) => {
