@@ -1,6 +1,5 @@
 var web3;
 const agentContractAddress = contractAddress;
-let contractInstance;
 
 function connect() {
   web3 = new Web3(window.ethereum);
