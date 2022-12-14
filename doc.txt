@@ -1,0 +1,25 @@
+
+
+
+patientRecords:  {
+    name, 
+    publicKey, 
+    records:[
+        {
+                id,
+                diagnosedBy,
+                time,
+                diagnosis,
+                comments, 
+                files: [
+                    {
+                        name, 
+                        url,
+                        type,
+                        hash 
+                    }
+                ]
+        }
+    ] 
+    
+}

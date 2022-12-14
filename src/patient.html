@@ -140,7 +140,8 @@
                   View medical records
                 </button>
               </div>
-              <pre id="records" style="margin-top: 20px"></pre>
+              <!-- <pre id="records" style="margin-top: 20px"></pre> -->
+              <div id="records" style="margin-top: 20px"></div>
             </div>
           </div>
         </div>
@@ -212,7 +213,7 @@
 
     <script src="js/bootstrap.min.js"></script>
     <script src="/js/web3.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/patient.js"></script>
 
     <script>
       var url_string = window.location.href;
@@ -366,7 +367,71 @@
       function showRecords(element) {
         if (toggleRecordsButton % 2 == 0) {
           $.get("http://localhost:8080/ipfs/" + recordHash, function (data) {
-            $("#records").html(data);
+            // $("#records").html(data);
+
+            // $("#records").show();
+            console.log(data);
+            const patientRecord = data;
+            // const patientRecord = JSON.parse(data);
+            $("#records").html(
+              // `
+              // <h3>Name: ${patientRecord.name}</h3>
+              // <h3>Public Key: ${patientRecord.publicKey}</h3>
+              // ${
+              //   patientRecord.records.length !== 0
+              //     ? patientRecord.records.map((rec) => {
+              //         return `
+              //     <h3>Diagnosed By : ${rec.diagnosedBy}</h3>
+              //     <h3>Diagnoses Time:${rec.time}</h3>
+              //     <h3>Diagnosis : ${rec.diagnosis}</h3>
+              //     <h3>Details : ${rec.comments}</h5>
+              //   `;
+              //       })
+              //     : ""
+              // }
+              // `
+              `
+              <h3>Name: ${patientRecord.name}</h3> 
+                                    <h3>Public Key: ${
+                                      patientRecord.publicKey
+                                    }</h3> 
+                                    
+                                   
+                                    ${
+                                      patientRecord.records.length !== 0
+                                        ? patientRecord.records.reduce(
+                                            (acc, rec) => {
+                                              return (
+                                                acc +
+                                                `
+                                                <div class="recordDiv" >
+                                        <h3>Diagnosed By : ${
+                                          rec.diagnosedBy
+                                        }</h3>
+                                        <h3>Diagnoses Time:${rec.time}</h3>
+                                        <h3>Diagnosis : ${rec.diagnosis}</h3>
+                                        <h3>Details : ${rec.comments}</h3>
+                                        ${
+                                          rec?.files.length !== 0
+                                            ? `<h3>Files:
+                                            
+                                           ${rec.files.map((file) => {
+                                             return `<a target="_blank" href=${file.url} id="file-${file.name}-${file.hash}">${file.name}</a>`;
+                                           })}
+                                           </h3>
+                                           `
+                                            : ""
+                                        }
+                                          </div>
+                                        
+                                      `
+                                              );
+                                            },
+                                            ""
+                                          )
+                                        : ""
+                                    }`
+            );
             $("#records").show();
           });
 

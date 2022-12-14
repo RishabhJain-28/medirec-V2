@@ -223,18 +223,14 @@
             var ipfshash = "";
 
             if (designation == "0") {
-              var reportTitle = `Name: ${name}
-              Public Key: ${publicKey}
-
-              `;
-
-              const data = {
+              //patient
+              const patientRecord = {
                 name,
                 publicKey,
+                records: [],
               };
 
-              // var buffer = Buffer(JSON.stringify(data));
-              var buffer = Buffer(reportTitle);
+              var buffer = Buffer(JSON.stringify(patientRecord));
 
               ipfs.files.add(buffer, (error, result) => {
                 if (error) {
@@ -260,6 +256,7 @@
                 }
               });
             } else {
+              //doctor
               contractInstance.add_agent(
                 name,
                 age,
