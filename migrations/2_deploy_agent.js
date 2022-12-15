@@ -7,11 +7,19 @@ module.exports = function (deployer) {
     let config = `
     const contractAddress = "${Agent.address}"
   `;
+    let configCard = `
+    const contractAddress = "${Agent.address}"
+    module.exports = {contractAddress}
+    `;
 
     let data = JSON.stringify(config);
     fs.writeFileSync(
       path.join(__dirname, "../src/js/contractAddress.js"),
-      JSON.parse(data)
+      config
+    );
+    fs.writeFileSync(
+      path.join(__dirname, "../card/contractAddress.js"),
+      configCard
     );
   });
 };

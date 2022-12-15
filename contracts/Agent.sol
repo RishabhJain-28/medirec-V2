@@ -54,7 +54,6 @@ contract Agent {
 
 
     function get_patient(address addr) view public returns (string memory , uint, uint[] memory , address, string memory ){
-        // if(keccak256(patientInfo[addr].name) == keccak256(""))revert();
         return (patientInfo[addr].name, patientInfo[addr].age, patientInfo[addr].diagnosis, Empty[addr], patientInfo[addr].record);
     }
 

@@ -1,3 +1,4 @@
 /build
 /node_modules
+/card/node_modules
 /test

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
     "reset": "truffle migrate --reset",
-    "start": "lite-server"
+    "start": "lite-server",
+    "deploy:contract": "truffle migrate"
   },
   "author": "",
   "license": "ISC",

@@ -299,9 +299,9 @@ function uploadFile() {
         return;
       }
       let url = `http://localhost:8080/ipfs/${result[0].hash}`;
-      console.log(`Url --> ${url}`);
-      document.getElementById("url").innerHTML = url;
-      document.getElementById("url").href = url;
+      // console.log(`Url --> ${url}`);
+      // document.getElementById("url").innerHTML = url;
+      // document.getElementById("url").href = url;
       currentRecFiles.push({
         url,
         hash: result[0].hash,
