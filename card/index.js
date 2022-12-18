@@ -1,7 +1,7 @@
 const Web3 = require("web3");
 const { contractAddress } = require("./contractAddress");
 
-const patient = "0x9c1e1F11A1Fd4Ead4Cf021A9a54229893888B931";
+const patient = "0x6C2f006b6D84355f196cC388185204542D1Db476";
 const doctor = "0xaC00A19Ec2DF3B620cAbE667c29ec655E39646A6";
 
 const web3 = new Web3("http://localhost:8545");

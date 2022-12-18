@@ -8,7 +8,9 @@
     "dev": "lite-server",
     "reset": "truffle migrate --reset",
     "start": "lite-server",
-    "deploy:contract": "truffle migrate"
+    "deploy:contract": "truffle deploy",
+    "migrate": "truffle migrate",
+    "css:watch": "npx tailwindcss -i ./src/css/tailwind/index.css -o ./src/css/dist/index.css --watch"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
   },
   "devDependencies": {
     "lite-server": "^2.6.1",
+    "tailwind": "^4.0.0",
     "truffle": "^5.6.4"
   }
 }

@@ -2,21 +2,39 @@
 
 
 patientRecords:  {
-    name, 
     publicKey, 
+    name, 
+    age,
+    bloodType, 
+    gender, 
+    phone,
+    email,
+    height, 
+    weight, 
+    dob,
+
+
     records:[
         {
                 id,
                 diagnosedBy,
                 time,
                 diagnosis,
-                comments, 
+                comment, 
+                rawText, 
                 files: [
                     {
                         name, 
                         url,
                         type,
                         hash 
+                    }
+                ]
+                medications: [
+                    {
+                        name, 
+                        dose 
+
                     }
                 ]
         }

@@ -1,0 +1,70 @@
+<div class="flex justify-center">
+  <!-- <div class="w-1/2 p-10"> -->
+  <div class="p-10">
+    <div id="quickActionDoctorContainer">
+      <div class="flex items-center justify-between">
+        <div class="flex">
+          <img
+            class="rounded-full w-[150px] h-[150px]"
+            src="/public/test80.jpg"
+          />
+          <div class="p-10 gap-5 flex flex-col text-3xl">
+            <div class="flex flex-col font-bold text-4xl">
+              <h1 class="text-6xl">Hello Doctor</h1>
+              <h1>${doctor.name}</h1>
+            </div>
+          </div>
+        </div>
+        <!-- <img src="/public/docLanding.jpeg" /> -->
+        <img src="/public/doctor.svg" class="w-[300px]" />
+      </div>
+    </div>
+    <div
+      id="quickActions"
+      class="flex justify-center items-center gap-60 mt-20"
+    >
+      <div
+        class="quickActionBtn rounded-xl p-8 text-center m-5 text-3xl text-black"
+      >
+        <div class="flex flex-col gap-7 items-center justify-center">
+          <img src="/public/profileDoc.png" class="w-36" />
+
+          <button
+            onclick="changeTab(profileTab)"
+            class="bg-[#3fdfe2] rounded-xl p-4"
+          >
+            Your Profile
+          </button>
+        </div>
+      </div>
+      <div
+        class="quickActionBtn rounded-xl p-8 text-center m-5 text-3xl text-black"
+      >
+        <div class="flex flex-col gap-7 items-center justify-center">
+          <img src="/public/newPatient.png" class="w-36" />
+          <button
+            class="bg-[#3fdfe2] rounded-xl p-4"
+            onclick="changeTab(addPatientTab)"
+          >
+            Add patient
+          </button>
+        </div>
+      </div>
+      <div
+        class="quickActionBtn rounded-xl p-8 text-center m-5 text-3xl text-black"
+      >
+        <div class="flex flex-col gap-7 items-center justify-center">
+          <img src="/public/viewHis.png" class="w-36" />
+
+          <button
+            class="bg-[#3fdfe2] rounded-xl p-4"
+            onclick="changeTab(addPatientTab)"
+          >
+            View History
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div id="quickActionPatientContainer" class="m-10"></div> -->
+  </div>
+</div>

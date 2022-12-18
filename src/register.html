@@ -84,9 +84,20 @@
 
           <form
             name="registerForm"
+            id="regForm"
             class="form-horizontal"
             action="./doctor.html"
           >
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="file">Photo:</label>
+              <div class="col-sm-8">
+                <input
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                  id="file"
+                  type="file"
+                />
+              </div>
+            </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="name">Name:</label>
               <div class="col-sm-8">
@@ -114,18 +125,6 @@
                 />
               </div>
             </div>
-            <div class="form-group">
-              <label for="designation" class="control-label col-sm-2"
-                >Registering as</label
-              >
-              <div class="col-sm-8">
-                <select class="form-control" id="designation" required>
-                  <option selected disabled>-- Please Select --</option>
-                  <option value="0">Patient</option>
-                  <option value="1">Doctor</option>
-                </select>
-              </div>
-            </div>
           </form>
           <div class="text-center">
             <button class="btn btn-primary btn-lg" onclick="addAgent()">
@@ -150,8 +149,99 @@
       src="https://unpkg.com/ipfs-api/dist/index.min.js"
       crossorigin="anonymous"
     ></script>
-
     <script>
+      // $("#").on("onclick", (e)=>{
+
+      //   })
+
+      function updateFormUI() {
+        const fields = [
+          "gender",
+          "bloodType",
+          "phone",
+          "email",
+          "height",
+          "weight",
+          "dob",
+        ];
+        const form = fields.reduce(
+          (acc, field) =>
+            acc +
+            `
+    <div class="form-group">
+              <label class="control-label col-sm-2" for="${field}">${
+              field[0].toUpperCase() + field.substring(1)
+            }</label>
+              <div class="col-sm-8">
+                <input
+                value="temp_${field}"
+                  class="form-control"
+                  id=${field}
+                  placeholder="Enter ${field}"
+                  name="${field}"
+                  required
+                />
+              </div>
+            </div>
+            `,
+          ""
+        );
+
+        $("#regForm").append(
+          form +
+            `<div class="form-group">
+              <label for="designation" class="control-label col-sm-2"
+                >Registering as</label
+              >
+              <div class="col-sm-8">
+                <select class="form-control" id="designation" required>
+                  <option selected disabled>-- Please Select --</option>
+                  <option value="0">Patient</option>
+                  <option value="1">Doctor</option>
+                </select>
+              </div>
+            </div>`
+        );
+      }
+      updateFormUI();
+    </script>
+    <script>
+      let profilePic = null;
+      document.getElementById("file").addEventListener("change", uploadFile);
+      function uploadFile() {
+        var ipfs = window.IpfsApi("localhost", "5001");
+
+        const Buffer = window.IpfsApi().Buffer;
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+          const buf = Buffer(reader.result); // Convert data into buffer
+          ipfs.files.add(buf, (err, result) => {
+            // Upload buffer to IPFS
+            if (err) {
+              console.error(err);
+              return;
+            }
+            let url = `http://localhost:8080/ipfs/${result[0].hash}`;
+            profilePic = url;
+            console.log(url);
+            // console.log(`Url --> ${url}`);
+            // document.getElementById("url").innerHTML = url;
+            // document.getElementById("url").href = url;
+            // currentRecFiles.push({
+            //   url,
+            //   hash: result[0].hash,
+            //   type: $("#fileType").val(),
+            //   name: $("#fileName").val(),
+            // });
+            // updatePatientRecordUI();
+            // alert("File uploaded");
+          });
+        };
+
+        const file = document.getElementById("file");
+        reader.readAsArrayBuffer(file.files[0]);
+      }
       function addAgent() {
         var ipfs = window.IpfsApi("localhost", "5001");
 
@@ -159,6 +249,13 @@
 
         name = $("#name").val();
         age = $("#age").val();
+        gender = $("#gender").val();
+        bloodType = $("#bloodType").val();
+        phone = $("#phone").val();
+        email = $("#email").val();
+        height = $("#height").val();
+        weight = $("#weight").val();
+        dob = $("#dob").val();
 
         designation = $("#designation").val();
         designation = parseInt(designation);
@@ -227,8 +324,20 @@
               const patientRecord = {
                 name,
                 publicKey,
+                age,
+                bloodType,
+                gender,
+                phone,
+                email,
+                height,
+                weight,
+                dob,
+                profilePic,
                 records: [],
               };
+              console.log({
+                patientRecord,
+              });
 
               var buffer = Buffer(JSON.stringify(patientRecord));
 
