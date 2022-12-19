@@ -17,9 +17,17 @@
     <!-- Custom CSS -->
     <style>
       body {
-        /* padding-top: 70px; */
-        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+        background-image: url("/public/bg2.jpeg");
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
+    </style>
+    <style>
       .navbar {
         margin-bottom: 70px;
       }
@@ -411,8 +419,8 @@
                                           rec.diagnosedBy
                                         }</h3>
                                         <h3>Diagnoses Time:${rec.time}</h3>
-                                        <h3>Diagnosis : ${rec.diagnosis}</h3>
-                                        <h3>Details : ${rec.comments}</h3>
+                                        
+                                        <h3>Details : ${rec.rawText}</h3>
                                         ${
                                           rec?.files.length !== 0
                                             ? `<h3>Files:

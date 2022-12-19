@@ -1,3 +1,3 @@
 
-    const contractAddress = "0x6c454aBd6e90Ba606033941Cc015e138cD5D9D2b"
+    const contractAddress = "0x42aC7F70c1d1E52934307E1319de4691598c2f0f"
   

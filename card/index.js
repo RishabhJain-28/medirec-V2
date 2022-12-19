@@ -1,8 +1,8 @@
 const Web3 = require("web3");
 const { contractAddress } = require("./contractAddress");
 
-const patient = "0x5626C886358524748Fe92cBe22C1D4bCB2Dd827B";
-const doctor = "0x41Ea62C64e220CBC30007fDe1ab301e16A292984";
+const patient = "0x7A43B7e582fe5Ff73452b1d889d57797D2114Db5";
+const doctor = "0x0df2db8c66562ac25d758Aa4cc5cd19AFe3a9452";
 
 const web3 = new Web3("http://localhost:8545");
 const abi = JSON.parse(

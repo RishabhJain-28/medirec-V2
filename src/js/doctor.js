@@ -372,7 +372,7 @@ ${currentRecFiles.reduce(
                 <div id="editor-${rec.id}"></div>
               </div>
               <!-- Table -->
-              <div class="">
+           <!--   <div class="">
                 <h1 class="my-5 font-bold text-3xl">Medications :</h1>
 
                 <div class="flex flex-col">
@@ -444,6 +444,7 @@ ${currentRecFiles.reduce(
                   </div>
                 </div>
               </div>
+              -->
            ${
              rec.files.length === 0
                ? ""
@@ -520,35 +521,38 @@ function updateProfileUI() {
 }
 function updateQuickActions() {
   console.log(currentPatient);
+  console.log(doctor);
   // $("#quickActionDoctorContainer").html(``);
+  $("#d_name").html(doctor.name);
+  $("#d_img").attr("src", doctor.profilePic);
 
-  $("#quickActionPatientContainer").html(`
+  // $("#quickActionPatientContainer").html(`
 
-  <h1 class="font-bold text-8xl py-10">Patient</h1>
-  <div class="flex gap-3 justify-between">
-    <div class="flex gap-3">
-      <img
-        class="rounded-full w-[150px] h-[150px]"
-        src="/public/test80.jpg"
-      />
-      <div class="p-10 gap-5 flex flex-col text-3xl">
-        <div class="max-w-[200px] gap-5 flex flex-col">
-          <h1><span class="font-bold">Name :</span> ${currentPatient.name}</h1>
-          <h1><span class="font-bold">Age : </span> ${currentPatient.age}</h1>
-          <button
-          onclick="changeTab(viewPatientRecordTab)"
-            class="bg-primrary p-4 text-3xl rounded-full text-white text-center"
-          >
-            View records
+  // <h1 class="font-bold text-8xl py-10">Patient</h1>
+  // <div class="flex gap-3 justify-between">
+  //   <div class="flex gap-3">
+  //     <img
+  //       class="rounded-full w-[150px] h-[150px]"
+  //       src="/public/test80.jpg"
+  //     />
+  //     <div class="p-10 gap-5 flex flex-col text-3xl">
+  //       <div class="max-w-[200px] gap-5 flex flex-col">
+  //         <h1><span class="font-bold">Name :</span> ${currentPatient.name}</h1>
+  //         <h1><span class="font-bold">Age : </span> ${currentPatient.age}</h1>
+  //         <button
+  //         onclick="changeTab(viewPatientRecordTab)"
+  //           class="bg-primrary p-4 text-3xl rounded-full text-white text-center"
+  //         >
+  //           View records
 
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  //           <i class="fa-solid fa-arrow-right"></i>
+  //         </button>
+  //       </div>
+  //     </div>
+  //   </div>
+  // </div>
 
-  `);
+  // `);
 
   //   $("#quickActions").append(`
   //   <button     onclick="changeTab(viewPatientRecordTab)" class="btn h-20 m-5 text-3xl bg-green-400 text-white">
@@ -564,8 +568,8 @@ const init = {
   },
   quickActions: function () {
     $("#back").css("display", "none");
+    updateQuickActions();
     if (currentPatient) {
-      updateQuickActions();
     }
   },
 

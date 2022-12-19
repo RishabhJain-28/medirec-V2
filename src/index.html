@@ -25,6 +25,18 @@
         margin-bottom: 70px;
       }
     </style>
+    <style>
+      body {
+        background-image: url("/public/bg2.jpeg");
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
   </head>
 
   <body>
@@ -65,11 +77,11 @@
 
     <!-- Page Content -->
     <div class="container">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="text-center">Welcome to</h3>
+      <div class="">
+        <div class="">
+          <h1 class="text-center text-7xl">Welcome to CuRecord</h1>
         </div>
-        <div class="panel-body">
+        <div class="">
           <div class="row">
             <div
               class="alert alert-warning col-sm-8 col-sm-offset-2"
@@ -81,15 +93,16 @@
           </div>
 
           <form class="form-horizontal" name="loginForm">
-            <div class="panel-heading">
-              <h5 class="text-center">
-                Login is Linked to your Metamask Account
-              </h5>
+            <div class="panel-heading flex justify-center items-center">
+              <img src="/public/doc.svg" class="w-[800px]" />
             </div>
+            <h5 class="text-center">
+              Login is Linked to your Metamask Account
+            </h5>
             <div class="form-group"></div>
           </form>
           <div class="text-center">
-            <h3 id="loginText" class="text-3xl"></h3>
+            <h3 id="loginText" class="text-3xl mb-5"></h3>
             <button
               id="loginBtn"
               class="btn btn-primary btn-lg"
@@ -97,12 +110,15 @@
             >
               Login
             </button>
-            <button id="registerBtn" class="btn" onclick="goToRegister()">
+            <button
+              id="registerBtn"
+              class="btn-primary btn-lg"
+              onclick="goToRegister()"
+            >
               Register
             </button>
           </div>
         </div>
-        <div class="panel-footer"></div>
       </div>
     </div>
     <!-- /.container -->
